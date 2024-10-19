@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMDHARD for GMDSOFT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">GMDHARD for GMDSOFT</div>
+        </header>
+
+        <main>
+            <div class="live-view">
+                <video id="video" width="640" height="480" autoplay></video>
+                <canvas id="overlay" width="640" height="480" style="position: absolute; top: 0; left: 0;"></canvas>
+                <div class="live-indicator">Live</div>
+            </div>
+            <div class="sidebar">
+                <button id="filterBtn">Filter</button>
+                <h3 class="centered">Notifications</h3>
+                <div class="notification-list" id="notification-list">
+                    <!-- Notifications will be dynamically added here -->
+                </div>
+                <button id="downloadBtn">Download</button>
+            </div>
+        </main>
+    </div>
+
+    <div class="popup" id="filterPopup">
+        <h3>Select Objects to Detect</h3>
+        <form id="filterForm">
+            <label><input type="radio" name="model" value="drones"> Drones</label><br>
+            <label><input type="radio" name="model" value="helmets"> Helmets</label><br>
+            <label><input type="radio" name="model" value="masks"> Masks</label><br>
+            <label><input type="radio" name="model" value="fire" checked> Fire</label><br>
+            <label><input type="radio" name="model" value="backpacks"> Backpacks</label><br>
+            <label><input type="radio" name="model" value="cars"> Cars</label><br>
+            <label><input type="radio" name="model" value="guns"> Guns</label><br>
+            <label><input type="radio" name="model" value="knives"> Knives</label><br>
+            <label><input type="radio" name="model" value="motorcycles"> Motorcycles</label><br>
+            <label><input type="radio" name="model" value="people"> People</label><br>
+            <button type="submit">Apply Filter</button>
+            <button type="button" id="closePopup">Close</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
